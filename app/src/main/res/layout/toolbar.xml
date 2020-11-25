@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="HomeViewModel"
+            type="com.example.moviesapp.ui.HomeViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleLayout">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:id="@+id/backButton"
+                android:onClick="@{HomeViewModel::onBackButtonClicked}"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbarTitle"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/backButton"
+                android:layout_toStartOf="@id/searchButton"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:id="@+id/searchButton"
+                android:onClick="@{HomeViewModel::onSearchButtonClicked}"
+                android:src="@drawable/search"
+                android:layout_marginEnd="8dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchLayout"
+            android:visibility="gone">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchBox"
+                android:hint="@string/search_hint"
+                android:maxLines="1"
+                android:maxLength="20"
+                android:text="@={HomeViewModel.searchKeyword}"
+                android:layout_toStartOf="@id/searchCloseButton"
+                android:layout_marginEnd="8dp"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:id="@+id/searchCloseButton"
+                android:onClick="@{HomeViewModel::onCloseSearchClicked}"
+                android:src="@drawable/search_cancel"
+                android:layout_marginEnd="8dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+</layout>
